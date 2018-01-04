@@ -1,7 +1,7 @@
 emsdk-docker
 ------------
 
-> Dockerfile with emsdk installed.
+> Docker container with emsdk installed.
 
 ## Example usage
 
@@ -14,6 +14,9 @@ Put the below script in your `package.json` scripts
 docker run -it --rm -u $(id -u):$(id -g) -v $PWD:/src -w /src tuananh/emsdk emcc -O3 src/xxhash.c -s WASM=1 -s SIDE_MODULE=1 -o src/xxhash.wasm
 ```
 
+In this example, suppose our project has a `src` folder with a C file `xxhash.c` in it.
+What we do here is that we will mount the `src` folder into the container's `/src` folder, compile
+it the `.wasm` there in the container and output it back to the host's `src` folder.
 
 ```json
 "scripts": {
